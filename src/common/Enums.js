@@ -1,5 +1,9 @@
 export const Route = {
-    SPLASH: 'Splash',
-    WELCOME: 'Welcome',
-  };
+  //Root  
+  SPLASH: 'Splash',
+  WELCOME: 'Welcome',
+
+  //Main Tab Navigation
+  TAB_HOME: 'TAB_HOME',
+};
   

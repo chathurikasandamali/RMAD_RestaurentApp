@@ -13,5 +13,11 @@ export default {
         grey: '#D3D1D8',
     },
 
+    fontFamily: {
+        bold: 'Ubuntu-Bold',
+        medium: 'Ubuntu-Medium',
+        light: 'Ubuntu-Light',
+    }
+
 };
 

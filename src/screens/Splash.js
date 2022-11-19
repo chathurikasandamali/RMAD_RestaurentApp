@@ -21,7 +21,7 @@ import { Route } from '../common/Enums';
 const Splash = ({navigation}) => {
   React.useEffect(() => {
     setTimeout(() => {
-      navigation.navigate(Route.WELCOME);
+      navigation.navigate(Route.TAB_HOME);
     }, 2000);
   }, [navigation]);
 

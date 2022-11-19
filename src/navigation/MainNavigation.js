@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {Route} from '../common/Enums';
 import Splash from '../screens/Splash';
 import Welcome from '../screens/Welcome';
+import MainTabNavigation from './MainTabNavigation';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,11 +17,16 @@ const MainNavigation = () =>{
                     component={Splash}
                     options={{headerShown: false}}
                 />
-                <Stack.Screen
+                {/* <Stack.Screen
                     name={Route.WELCOME}
                     component={Welcome}
                     options={{headerShown: false}}
-                />
+                /> */}
+                <Stack.Screen
+                    name={Route.TAB_HOME}
+                    component={MainTabNavigation}
+                    options={{headerShown: false}}
+                /> 
             </Stack.Navigator>
         </NavigationContainer>
     );
