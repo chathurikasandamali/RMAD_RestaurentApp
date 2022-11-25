@@ -7,9 +7,11 @@ export const ActionButton = ({
   customStyle,
   customTextStyle,
   onPressBtn,
+  icon,
 }) => {
   return (
     <TouchableOpacity style={customStyle} onPress={onPressBtn}>
+      {icon}
       <Text
         style={[{fontFamily: CommonStyles.fontFamily.bold}, customTextStyle]}>
         {title}
