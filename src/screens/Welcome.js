@@ -21,8 +21,7 @@ import CommonStyles from '../common/CommonStyles';
 import {ActionButton} from '../components/ActionButton';
 import {Route} from '../common/Enums';
 import LinearGradient from 'react-native-linear-gradient';
-import {FBLogo} from '../assets/icons/FBLogo';
-import {GoogleLogo} from '../assets/icons/GoogleLogo';
+import { LoginButtonGroup } from '../components/LoginButtonGroup';
 
 const Welcome = ({navigation}) => {
   const subTitle = 'Your favourite foods delivered \nfast at your door.';
@@ -58,7 +57,7 @@ const Welcome = ({navigation}) => {
             <View style={styles.divider} />
           </View>
 
-          <View style={styles.btnContainer}>
+          {/* <View style={styles.btnContainer}>
             <ActionButton
               title={'FACEBOOK'}
               onPressBtn={() => navigation.navigate(Route.SPLASH)}
@@ -73,11 +72,12 @@ const Welcome = ({navigation}) => {
               customTextStyle={styles.btnText}
               icon={<GoogleLogo />}
             />
-          </View>
+          </View> */}
+          <LoginButtonGroup />
 
           <ActionButton
             title={'Start with email or phone'}
-            onPressBtn={() => navigation.navigate(Route.SPLASH)}
+            onPressBtn={() => navigation.navigate(Route.SIGNUP)}
             customStyle={styles.footerBtnStyle}
             customTextStyle={styles.footerBtnText}
           />

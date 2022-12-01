@@ -5,6 +5,7 @@ import {Route} from '../common/Enums';
 import Splash from '../screens/Splash';
 import Welcome from '../screens/Welcome';
 import MainTabNavigation from './MainTabNavigation';
+import Signup from '../screens/SignUp';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,11 +18,16 @@ const MainNavigation = () =>{
                     component={Splash}
                     options={{headerShown: false}}
                 />
-                {/* <Stack.Screen
+                <Stack.Screen
                     name={Route.WELCOME}
                     component={Welcome}
                     options={{headerShown: false}}
-                /> */}
+                />
+                <Stack.Screen
+                    name={Route.SIGNUP}
+                    component={Signup}
+                    options={{headerShown: false}}
+                />
                 <Stack.Screen
                     name={Route.TAB_HOME}
                     component={MainTabNavigation}
