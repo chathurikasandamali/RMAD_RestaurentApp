@@ -100,7 +100,10 @@ const styles = StyleSheet.create({
     backgroundColor: CommonStyles.colors.white,
   },
   pageTopDesign: {
-    marginTop: 0,
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
   },
   image: {
     position: 'absolute',

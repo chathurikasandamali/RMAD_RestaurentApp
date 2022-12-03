@@ -19,12 +19,6 @@ import {BackIcon} from '../assets/icons/BackIcon';
 const VerificationCode = ({navigation}) => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const [showPW, setShowPW] = React.useState(false);
-
-  const showPassword = () => {
-    setShowPW(!showPW);
-    console.log('Press');
-  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -43,22 +37,26 @@ const VerificationCode = ({navigation}) => {
           onChangeText={text => setEmail(text)}
           value={email}
           keyboardType={'numeric'}
+          customInputStyle={styles.inputStyle}
         />
         <CustomTextInput
           onChangeText={text => setEmail(text)}
           value={email}
           keyboardType={'numeric'}
-        />
-        {/* <CustomTextInput
-          onChangeText={text => setEmail(text)}
-          value={email}
-          keyboardType={'numeric'}
+          customInputStyle={styles.inputStyle}
         />
         <CustomTextInput
           onChangeText={text => setEmail(text)}
           value={email}
           keyboardType={'numeric'}
-        /> */}
+          customInputStyle={styles.inputStyle}
+        />
+        <CustomTextInput
+          onChangeText={text => setEmail(text)}
+          value={email}
+          keyboardType={'numeric'}
+          customInputStyle={styles.inputStyle}
+        /> 
       </View>
       <View style={styles.footerTextContainer}>
         <Text style={styles.footerText}>I don't receive a code! </Text>
@@ -87,7 +85,10 @@ const styles = StyleSheet.create({
     backgroundColor: CommonStyles.colors.white,
   },
   pageTopDesign: {
-    marginTop: 0,
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
   },
   image: {
     position: 'absolute',
@@ -126,7 +127,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   titleContainer: {
-    marginTop: 40,
+    marginTop: 0,
   },
   title: {
     fontFamily: CommonStyles.fontFamily.bold,
@@ -134,7 +135,7 @@ const styles = StyleSheet.create({
     color: CommonStyles.colors.black,
   },
   inputContainer: {
-    // flexDirection: 'row'
+    flexDirection: 'row'
   },
   footerTextContainer: {
     flexDirection: 'row',
@@ -145,6 +146,11 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: CommonStyles.colors.grey4,
     fontFamily: CommonStyles.fontFamily.medium,
+  },
+  inputStyle: {
+    width: CommonStyles.width * 0.2,
+    margin: 10,
+    marginTop: 90,
   },
 });
 

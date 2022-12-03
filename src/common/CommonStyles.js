@@ -15,6 +15,7 @@ export default {
     grey2: '#30384F',
     grey3: '#9796A1',
     grey4: '#5B5B5E',
+    grey5: '#EEEEEE',
     divider: '#B3B3B3',
   },
 

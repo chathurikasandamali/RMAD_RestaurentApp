@@ -15,6 +15,7 @@ export const CustomTextInput = ({
   // onChangeText,
   // value,
   // placeholder,
+  customInputStyle,
   keyboardType,
   onShowPasswordPress,
   secureTextEntry,
@@ -27,7 +28,7 @@ export const CustomTextInput = ({
       <View style={styles.inputContainer}>
         <TextInput
           {...props}
-          style={styles.inputStyles}
+          style={[styles.inputStyles, customInputStyle]}
           // onChangeText={onChangeText}
           // value={value}
           // placeholder={placeholder}
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: 'black',
     borderWidth: 1,
-    borderColor: '#EEEEEE',
+    borderColor: CommonStyles.colors.grey5,
     backgroundColor: CommonStyles.colors.white,
     padding: 20,
   },
