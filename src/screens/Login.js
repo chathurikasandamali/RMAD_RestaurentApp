@@ -1,5 +1,12 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, StatusBar, Text, View, Image} from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  StatusBar,
+  Text,
+  View,
+  Image,
+} from 'react-native';
 import CommonStyles from '../common/CommonStyles';
 import {ActionButton} from '../components/ActionButton';
 import {Route} from '../common/Enums';
@@ -7,9 +14,9 @@ import {CustomTextInput} from '../components/CustomTextInput';
 import {LoginButtonGroup} from '../components/LoginButtonGroup';
 import {IconEye} from '../assets/icons/IconEye';
 import Assets from '../assets/index';
+import {BackIcon} from '../assets/icons/BackIcon';
 
-const Signup = ({navigation}) => {
-  const [fullName, setFullName] = React.useState('');
+const Login = ({navigation}) => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [showPW, setShowPW] = React.useState(false);
@@ -21,18 +28,16 @@ const Signup = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Image 
-        style={styles.pageTopDesign}
-        source={Assets.pageTopDesign}
+      <Image style={styles.pageTopDesign} source={Assets.pageTopDesign} />
+      <ActionButton
+        onPressBtn={() => navigation.navigate(Route.SIGNUP)}
+        icon={<BackIcon />}
+        customStyle={styles.backBtnStyle}
+        customTextStyle={styles.skipText}
       />
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>SignUp</Text>
+        <Text style={styles.title}>Login</Text>
       </View>
-      <CustomTextInput
-        title={'Full Name'}
-        onChangeText={text => setFullName(text)}
-        value={fullName}
-      />
       <CustomTextInput
         title={'Email'}
         onChangeText={text => setEmail(text)}
@@ -53,19 +58,19 @@ const Signup = ({navigation}) => {
           />
         }
       />
-
+      <Text style={styles.forgotText}>Forgot Password?</Text>
       <ActionButton
-        title={'SIGN UP'}
-        onPressBtn={() => navigation.navigate(Route.TAB_HOME)}
+        title={'LOGIN'}
+        onPressBtn={() => navigation.navigate(Route.VERIFICATION_CODE)}
         customStyle={styles.btnStyle}
         customTextStyle={styles.btnText}
       />
 
       <View style={styles.footerTextContainer}>
-        <Text style={styles.footerText}>Already have an account? </Text>
+        <Text style={styles.footerText}>Don't have an account? </Text>
         <ActionButton
-          title={'Login'}
-          onPressBtn={() => navigation.navigate(Route.LOGIN)}
+          title={'Signup'}
+          onPressBtn={() => navigation.navigate(Route.SIGNUP)}
           customTextStyle={
             ([styles.footerText],
             {
@@ -95,12 +100,28 @@ const styles = StyleSheet.create({
     backgroundColor: CommonStyles.colors.white,
   },
   pageTopDesign: {
-    marginTop: 0
+    marginTop: 0,
   },
   image: {
     position: 'absolute',
     height: CommonStyles.height,
     width: CommonStyles.width,
+  },
+  backBtnStyle: {
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: 50,
+    left: 40,
+    backgroundColor: CommonStyles.colors.white,
+    borderRadius: 10,
+    height: 50,
+    width: 30,
+  },
+  forgotText: {
+    color: CommonStyles.colors.primary,
+    fontSize: 14,
+    marginTop: 30,
   },
   btnStyle: {
     backgroundColor: CommonStyles.colors.primary,
@@ -109,7 +130,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 28.5,
-    marginTop: 22,
+    marginTop: 40,
   },
 
   btnText: {
@@ -118,7 +139,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   titleContainer: {
-    marginTop: 1,
+    marginTop: 10,
   },
   title: {
     fontFamily: CommonStyles.fontFamily.bold,
@@ -128,7 +149,7 @@ const styles = StyleSheet.create({
   footerTextContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginVertical: 10,
+    marginVertical: 30,
   },
   footerText: {
     fontSize: 14,
@@ -148,4 +169,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Signup;
+export default Login;

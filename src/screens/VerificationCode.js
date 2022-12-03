@@ -1,5 +1,12 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, StatusBar, Text, View, Image} from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  StatusBar,
+  Text,
+  View,
+  Image,
+} from 'react-native';
 import CommonStyles from '../common/CommonStyles';
 import {ActionButton} from '../components/ActionButton';
 import {Route} from '../common/Enums';
@@ -7,9 +14,9 @@ import {CustomTextInput} from '../components/CustomTextInput';
 import {LoginButtonGroup} from '../components/LoginButtonGroup';
 import {IconEye} from '../assets/icons/IconEye';
 import Assets from '../assets/index';
+import {BackIcon} from '../assets/icons/BackIcon';
 
-const Signup = ({navigation}) => {
-  const [fullName, setFullName] = React.useState('');
+const VerificationCode = ({navigation}) => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [showPW, setShowPW] = React.useState(false);
@@ -21,51 +28,43 @@ const Signup = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Image 
-        style={styles.pageTopDesign}
-        source={Assets.pageTopDesign}
+      <Image style={styles.pageTopDesign} source={Assets.pageTopDesign} />
+      <ActionButton
+        onPressBtn={() => navigation.navigate(Route.SIGNUP)}
+        icon={<BackIcon />}
+        customStyle={styles.backBtnStyle}
+        customTextStyle={styles.skipText}
       />
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>SignUp</Text>
+        <Text style={styles.title}>Verification Code</Text>
       </View>
-      <CustomTextInput
-        title={'Full Name'}
-        onChangeText={text => setFullName(text)}
-        value={fullName}
-      />
-      <CustomTextInput
-        title={'Email'}
-        onChangeText={text => setEmail(text)}
-        value={email}
-        keyboardType={'email-address'}
-      />
-      <CustomTextInput
-        title={'Password'}
-        onChangeText={text => setPassword(text)}
-        value={password}
-        secureTextEntry={!showPW}
-        onShowPasswordPress={showPassword}
-        icon={
-          <IconEye
-            fill={
-              showPW ? CommonStyles.colors.primary : CommonStyles.colors.grey1
-            }
-          />
-        }
-      />
-
-      <ActionButton
-        title={'SIGN UP'}
-        onPressBtn={() => navigation.navigate(Route.TAB_HOME)}
-        customStyle={styles.btnStyle}
-        customTextStyle={styles.btnText}
-      />
-
+      <View style={styles.inputContainer}>
+        <CustomTextInput
+          onChangeText={text => setEmail(text)}
+          value={email}
+          keyboardType={'numeric'}
+        />
+        <CustomTextInput
+          onChangeText={text => setEmail(text)}
+          value={email}
+          keyboardType={'numeric'}
+        />
+        {/* <CustomTextInput
+          onChangeText={text => setEmail(text)}
+          value={email}
+          keyboardType={'numeric'}
+        />
+        <CustomTextInput
+          onChangeText={text => setEmail(text)}
+          value={email}
+          keyboardType={'numeric'}
+        /> */}
+      </View>
       <View style={styles.footerTextContainer}>
-        <Text style={styles.footerText}>Already have an account? </Text>
+        <Text style={styles.footerText}>I don't receive a code! </Text>
         <ActionButton
-          title={'Login'}
-          onPressBtn={() => navigation.navigate(Route.LOGIN)}
+          title={'Please resend'}
+          onPressBtn={() => navigation.navigate(Route.SIGNUP)}
           customTextStyle={
             ([styles.footerText],
             {
@@ -75,13 +74,6 @@ const Signup = ({navigation}) => {
           }
         />
       </View>
-
-      <View style={styles.dividerContainer}>
-        <View style={styles.divider} />
-        <Text style={styles.dividerText}>{'Sign up with'}</Text>
-        <View style={styles.divider} />
-      </View>
-      <LoginButtonGroup />
     </SafeAreaView>
   );
 };
@@ -95,12 +87,28 @@ const styles = StyleSheet.create({
     backgroundColor: CommonStyles.colors.white,
   },
   pageTopDesign: {
-    marginTop: 0
+    marginTop: 0,
   },
   image: {
     position: 'absolute',
     height: CommonStyles.height,
     width: CommonStyles.width,
+  },
+  backBtnStyle: {
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: 50,
+    left: 40,
+    backgroundColor: CommonStyles.colors.white,
+    borderRadius: 10,
+    height: 50,
+    width: 30,
+  },
+  forgotText: {
+    color: CommonStyles.colors.primary,
+    fontSize: 14,
+    marginTop: 30,
   },
   btnStyle: {
     backgroundColor: CommonStyles.colors.primary,
@@ -109,7 +117,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 28.5,
-    marginTop: 22,
+    marginTop: 40,
   },
 
   btnText: {
@@ -118,34 +126,26 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   titleContainer: {
-    marginTop: 1,
+    marginTop: 40,
   },
   title: {
     fontFamily: CommonStyles.fontFamily.bold,
     fontSize: 36,
     color: CommonStyles.colors.black,
   },
+  inputContainer: {
+    // flexDirection: 'row'
+  },
   footerTextContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginVertical: 10,
+    marginVertical: 30,
   },
   footerText: {
     fontSize: 14,
     color: CommonStyles.colors.grey4,
     fontFamily: CommonStyles.fontFamily.medium,
   },
-  divider: {
-    height: 1,
-    width: CommonStyles.width * 0.3,
-    backgroundColor: CommonStyles.colors.divider,
-  },
-  dividerContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    marginTop: 1,
-  },
 });
 
-export default Signup;
+export default VerificationCode;
