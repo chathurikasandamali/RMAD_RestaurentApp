@@ -24,7 +24,7 @@ const VerificationCode = ({navigation}) => {
     <SafeAreaView style={styles.container}>
       <Image style={styles.pageTopDesign} source={Assets.pageTopDesign} />
       <ActionButton
-        onPressBtn={() => navigation.navigate(Route.SIGNUP)}
+        onPressBtn={() => navigation.navigate(Route.LOGIN)}
         icon={<BackIcon />}
         customStyle={styles.backBtnStyle}
         customTextStyle={styles.skipText}
@@ -32,6 +32,9 @@ const VerificationCode = ({navigation}) => {
       <View style={styles.titleContainer}>
         <Text style={styles.title}>Verification Code</Text>
       </View>
+      <Text style={styles.textStyle}>
+        Please type the verification code sent to prelookstudio@gmail.com
+      </Text>
       <View style={styles.inputContainer}>
         <CustomTextInput
           onChangeText={text => setEmail(text)}
@@ -56,7 +59,7 @@ const VerificationCode = ({navigation}) => {
           value={email}
           keyboardType={'numeric'}
           customInputStyle={styles.inputStyle}
-        /> 
+        />
       </View>
       <View style={styles.footerTextContainer}>
         <Text style={styles.footerText}>I don't receive a code! </Text>
@@ -135,7 +138,7 @@ const styles = StyleSheet.create({
     color: CommonStyles.colors.black,
   },
   inputContainer: {
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   footerTextContainer: {
     flexDirection: 'row',
@@ -150,7 +153,13 @@ const styles = StyleSheet.create({
   inputStyle: {
     width: CommonStyles.width * 0.2,
     margin: 10,
-    marginTop: 90,
+    marginTop: 50,
+  },
+  textStyle: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 10,
+    color: CommonStyles.colors.grey3,
   },
 });
 

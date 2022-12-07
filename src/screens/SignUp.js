@@ -7,6 +7,7 @@ import {CustomTextInput} from '../components/CustomTextInput';
 import {LoginButtonGroup} from '../components/LoginButtonGroup';
 import {IconEye} from '../assets/icons/IconEye';
 import Assets from '../assets/index';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Signup = ({navigation}) => {
   const [fullName, setFullName] = React.useState('');
@@ -19,6 +20,22 @@ const Signup = ({navigation}) => {
     console.log('Press');
   };
 
+  const storeData = async () => {
+    try {
+      //await AsyncStorage.setItem('@storage_Key', value);
+      let userData = {
+        fullName : fullName,
+        email: email,
+        password: password
+      };
+      const userObject = JSON.stringify(userData)
+    await AsyncStorage.setItem('USER', userObject)
+      console.log("Data insert successfully")
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <Image 
@@ -30,18 +47,18 @@ const Signup = ({navigation}) => {
       </View>
       <CustomTextInput
         title={'Full Name'}
-        onChangeText={text => setFullName(text)}
+        onChangeText={setFullName}
         value={fullName}
       />
       <CustomTextInput
         title={'Email'}
-        onChangeText={text => setEmail(text)}
+        onChangeText={setEmail()}
         value={email}
         keyboardType={'email-address'}
       />
       <CustomTextInput
         title={'Password'}
-        onChangeText={text => setPassword(text)}
+        onChangeText={setPassword()}
         value={password}
         secureTextEntry={!showPW}
         onShowPasswordPress={showPassword}
@@ -55,7 +72,13 @@ const Signup = ({navigation}) => {
       />
 
       <ActionButton
-        title={'SIGN UP'}
+        title={'Store Data'}
+        onPressBtn={() => storeData()}
+        customStyle={styles.btnStyle}
+        customTextStyle={styles.btnText}
+      />
+      <ActionButton
+        title={'Get Data'}
         onPressBtn={() => navigation.navigate(Route.TAB_HOME)}
         customStyle={styles.btnStyle}
         customTextStyle={styles.btnText}
@@ -95,7 +118,10 @@ const styles = StyleSheet.create({
     backgroundColor: CommonStyles.colors.white,
   },
   pageTopDesign: {
-    marginTop: 0
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
   },
   image: {
     position: 'absolute',

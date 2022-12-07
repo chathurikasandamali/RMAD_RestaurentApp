@@ -12,7 +12,7 @@ export const CustomTextInput = ({
   title,
   props,
   icon,
-  // onChangeText,
+  onChangeText,
   // value,
   // placeholder,
   customInputStyle,
@@ -29,7 +29,7 @@ export const CustomTextInput = ({
         <TextInput
           {...props}
           style={[styles.inputStyles, customInputStyle]}
-          // onChangeText={onChangeText}
+          onChangeText={onChangeText}
           // value={value}
           // placeholder={placeholder}
           keyboardType={keyboardType}

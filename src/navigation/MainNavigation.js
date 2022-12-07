@@ -8,6 +8,7 @@ import MainTabNavigation from './MainTabNavigation';
 import Signup from '../screens/SignUp';
 import Login from '../screens/Login';
 import VerificationCode from '../screens/VerificationCode';
+import ResetPassword from '../screens/ResetPassword';
 
 const Stack = createNativeStackNavigator();
 
@@ -38,6 +39,11 @@ const MainNavigation = () => {
         <Stack.Screen
           name={Route.VERIFICATION_CODE}
           component={VerificationCode}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name={Route.RESET_PASSWORD}
+          component={ResetPassword}
           options={{headerShown: false}}
         />
         <Stack.Screen

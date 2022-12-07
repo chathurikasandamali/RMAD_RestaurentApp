@@ -26,6 +26,18 @@ const Login = ({navigation}) => {
     console.log('Press');
   };
 
+  const getData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('USER');
+      if (value !== null) {
+        console.log('Value > ', JSON.parse(value));
+        // value previously stored
+      }
+    } catch (e) {
+      // error reading value
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Image style={styles.pageTopDesign} source={Assets.pageTopDesign} />
@@ -40,13 +52,13 @@ const Login = ({navigation}) => {
       </View>
       <CustomTextInput
         title={'Email'}
-        onChangeText={text => setEmail(text)}
+        onChangeText={setEmail}
         value={email}
         keyboardType={'email-address'}
       />
       <CustomTextInput
         title={'Password'}
-        onChangeText={text => setPassword(text)}
+        onChangeText={setPassword}
         value={password}
         secureTextEntry={!showPW}
         onShowPasswordPress={showPassword}
@@ -58,10 +70,20 @@ const Login = ({navigation}) => {
           />
         }
       />
-      <Text style={styles.forgotText}>Forgot Password?</Text>
+      <ActionButton
+        title={'Forgot Password?'}
+        onPressBtn={() => navigation.navigate(Route.RESET_PASSWORD)}
+        customTextStyle={styles.forgotText}
+      />
       <ActionButton
         title={'LOGIN'}
         onPressBtn={() => navigation.navigate(Route.VERIFICATION_CODE)}
+        customStyle={styles.btnStyle}
+        customTextStyle={styles.btnText}
+      />
+      <ActionButton
+        title={'GET DATA'}
+        onPressBtn={() => getData()}
         customStyle={styles.btnStyle}
         customTextStyle={styles.btnText}
       />
