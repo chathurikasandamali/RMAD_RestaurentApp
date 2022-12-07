@@ -22,7 +22,7 @@ function MainTabNavigation() {
             return focused ? (
               <HomeIcon fill={CommonStyles.colors.primary} />
             ) : (
-              <HomeIcon fill={CommonStyles.colors.grey}/>
+              <HomeIcon fill={CommonStyles.colors.grey1}/>
             );
           },
         }}
